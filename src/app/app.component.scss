@@ -1,0 +1,56 @@
+$black: #000;
+
+#game-app {
+    height: 100vh;
+    width: 960px;
+    height: 640px;
+    margin: 20px auto;
+    background-color: $black;
+    border: 1px solid green;
+    display: flex;
+    .cell {
+        width: 32px;
+        height: 32px;
+        position: relative;
+    }
+
+    .player {
+        position: absolute;
+        top: -20px;
+        width: 35px;
+        height: 52px;
+        background: url('../assets/img/rocket.png') -135px -28px;
+        background-size: 875px;
+        z-index: 5;
+    }
+
+    .sprite-1 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('../assets/img/sprites.png') -2px -306px;
+        background-size: 1628px;
+    }
+
+    .sprite-2 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('../assets/img/sprites.png') -300px -235px;
+        background-size: 1628px;
+    }
+    .sprite-3 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('../assets/img/sprites.png') -300px -272px;
+        background-size: 1628px;
+    }
+    .sprite-4 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('../assets/img/sprites.png') -36px -340px;
+        background-size: 1628px;
+    }
+}
