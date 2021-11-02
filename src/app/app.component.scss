@@ -15,14 +15,51 @@ $black: #000;
     }
 
     .player {
-        position: absolute;
-        top: -20px;
         width: 35px;
         height: 52px;
-        background: url('../assets/img/rocket.png') -135px -28px;
+        background: url('../assets/img/rocket.png') -135px -157px;
         background-size: 875px;
-        z-index: 5;
+        z-index: 2;
     }
+
+    .player-left{
+        position: absolute;
+        top: -20px;
+        background: url('../assets/img/rocket.png') -135px -95px;
+        // background: url('../assets/img/rocket.png') -198px -157px;
+        background-size: 875px;
+        animation-name: moveLeft;
+        animation-duration: 8s;
+    }
+
+    .player-right{
+        position: absolute;
+        top: -20px;
+        background: url('../assets/img/rocket.png') -135px -157px;
+        // background: url('../assets/img/rocket.png') -198px -157px;
+        background-size: 875px;
+        animation-name: moveLeft;
+        animation-duration: 8s;
+    }
+
+    .player-front{
+        position: absolute;
+        top: -20px;
+        background: url('../assets/img/rocket.png') -135px -28px;
+        // background: url('../assets/img/rocket.png') -198px -157px;
+        background-size: 875px;
+        animation-name: moveLeft;
+        animation-duration: 8s;
+    }
+
+    // @keyframes moveLeft {
+    //     0%  {background: url('../assets/img/rocket.png') -198px -157px;right: -5px;}
+    //     25% {background: url('../assets/img/rocket.png') -135px -157px;right: -10px;}
+    //     50% {background: url('../assets/img/rocket.png') -198px -157px;right: -15px;}
+    //     75% {background: url('../assets/img/rocket.png') -135px -157px;right: -10px;}
+    //     100% {background: url('../assets/img/rocket.png') -198px -157px;right: -15px;}
+
+    //   }
 
     .sprite-1 {
         position: absolute;
@@ -52,5 +89,6 @@ $black: #000;
         height: 100%;
         background: url('../assets/img/sprites.png') -36px -340px;
         background-size: 1628px;
+        z-index: 1;
     }
 }

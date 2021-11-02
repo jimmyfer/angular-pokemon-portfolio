@@ -1,5 +1,5 @@
 <router-outlet></router-outlet>
-<div (keyup)="move( $event )" tabindex="0"
+<div (keydown)="keyboardEvents( $event )" tabindex="0"
 id="game-app">
   <div *ngFor="let column of pokeMap">
     <div *ngFor="let cell of column" class="cell">
@@ -7,7 +7,7 @@ id="game-app">
       <div *ngIf="cell.map.includes('sprite-2')" class="sprite-2"></div>
       <div *ngIf="cell.map.includes('sprite-3')" class="sprite-3"></div>
       <div *ngIf="cell.map.includes('sprite-4')" class="sprite-4"></div>
-      <div *ngIf="cell.map.includes('player')" class="player"></div>
+      <div *ngIf="cell.player" class="player {{ playerBasePosition }}"></div>
     </div>
   </div>
 </div>
