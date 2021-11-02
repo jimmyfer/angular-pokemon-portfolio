@@ -22,44 +22,92 @@ $black: #000;
         z-index: 2;
     }
 
-    .player-left{
+    .player-base {
         position: absolute;
         top: -20px;
-        background: url('../assets/img/rocket.png') -135px -95px;
-        // background: url('../assets/img/rocket.png') -198px -157px;
         background-size: 875px;
         animation-name: moveLeft;
         animation-duration: 8s;
+        z-index: 2;
+    }
+
+    .player-left{
+        background: url('../assets/img/rocket.png') -135px -95px;
+    }
+
+    .player-left-active {
+        right: 10px;
+        background: url('../assets/img/rocket.png') -198px -95px;
+    }
+
+    .player-left-active-two{
+        right: 20px;
+        background: url('../assets/img/rocket.png') -135px -95px;
+    }
+
+    .player-left-active-thre {
+        right: 30px;
+        background: url('../assets/img/rocket.png') -198px -95px;
     }
 
     .player-right{
-        position: absolute;
-        top: -20px;
         background: url('../assets/img/rocket.png') -135px -157px;
-        // background: url('../assets/img/rocket.png') -198px -157px;
-        background-size: 875px;
-        animation-name: moveLeft;
-        animation-duration: 8s;
+        z-index: 2;
+    }
+
+    .player-right-active {
+        right: -10px;
+        background: url('../assets/img/rocket.png') -198px -157px;
+    }
+
+    .player-right-active-two{
+        right: -20px;
+        background: url('../assets/img/rocket.png') -135px -157px;
+    }
+
+    .player-right-active-thre {
+        right: -30px;
+        background: url('../assets/img/rocket.png') -198px -157px;
     }
 
     .player-front{
-        position: absolute;
-        top: -20px;
         background: url('../assets/img/rocket.png') -135px -28px;
-        // background: url('../assets/img/rocket.png') -198px -157px;
-        background-size: 875px;
-        animation-name: moveLeft;
-        animation-duration: 8s;
     }
 
-    // @keyframes moveLeft {
-    //     0%  {background: url('../assets/img/rocket.png') -198px -157px;right: -5px;}
-    //     25% {background: url('../assets/img/rocket.png') -135px -157px;right: -10px;}
-    //     50% {background: url('../assets/img/rocket.png') -198px -157px;right: -15px;}
-    //     75% {background: url('../assets/img/rocket.png') -135px -157px;right: -10px;}
-    //     100% {background: url('../assets/img/rocket.png') -198px -157px;right: -15px;}
+    .player-front-active {
+        top: -10px;
+        background: url('../assets/img/rocket.png') -198px -28px;
+    }
 
-    //   }
+    .player-front-active-two{
+        top: 0px;
+        background: url('../assets/img/rocket.png') -135px -28px;
+    }
+
+    .player-front-active-thre {
+        top: 10px;
+        background: url('../assets/img/rocket.png') -198px -28px;
+    }
+
+    .player-up {
+        top: -20px;
+        background: url('../assets/img/rocket.png') -135px -220px;
+    }
+
+    .player-up-active {
+        top: -30px;
+        background: url('../assets/img/rocket.png') -198px -220px;
+    }
+
+    .player-up-active-two{
+        top: -40px;
+        background: url('../assets/img/rocket.png') -135px -220px;
+    }
+
+    .player-up-active-thre {
+        top: -50px;
+        background: url('../assets/img/rocket.png') -198px -220px;
+    }
 
     .sprite-1 {
         position: absolute;
@@ -90,5 +138,13 @@ $black: #000;
         background: url('../assets/img/sprites.png') -36px -340px;
         background-size: 1628px;
         z-index: 1;
+    }
+    .sprite-5 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('../assets/img/sprites.png') -70px -376px;
+        background-size: 1628px;
+        z-index: 3;
     }
 }
