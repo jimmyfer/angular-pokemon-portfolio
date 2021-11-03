@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { PokemonMap } from '../interfaces/pokemonmap.interface';
+import { BattleService } from './battle.service';
 
 import { PokeMapService } from './poke-map.service';
 
@@ -18,16 +19,21 @@ export class MovementService {
   pokeMap: PokemonMap[][] = [];
   playerPositionX: number = 0;
   playerPositionY: number = 0;
-  private playerMoving: boolean = false;
+  playerMoving: boolean = false;
+  private _playerInBattle: boolean = false;
 
-  constructor(private pokeMapService: PokeMapService) { 
+  constructor(private pokeMapService: PokeMapService, private battleService: BattleService) { 
     this.pokeMap = pokeMapService.pokeMap;
     this.playerPositionX = pokeMapService._playerPositionX;
     this.playerPositionY = pokeMapService._playerPositionY;
   }
 
+  get playerInBattle() {
+    return this._playerInBattle;
+  }
+
   updatePlayerPosition(key: string) {
-    if (key === 'ArrowRight') {
+    if (key === 'ArrowRight' && !this.playerInBattle) {
       if (!(this.pokeMapService.playerBasePosition === 'player-right')) {
         this.pokeMapService.playerBasePosition = 'player-right';
         return
@@ -48,12 +54,15 @@ export class MovementService {
               this.pokeMap[this.playerPositionX][this.playerPositionY].player = true;
               this.pokeMap[this.playerPositionX][this.playerPositionY].nextCell = false;
               this.playerMoving = false;
+              if (this.battleService.generateBattle(0.1) && this.pokeMap[this.playerPositionX][this.playerPositionY].map.includes('sprite-4')) {
+                this._playerInBattle = true;
+              }
             }, 60);
           }, 60);
          }, 60);
       }
     }
-    if (key === 'ArrowLeft') {
+    if (key === 'ArrowLeft' && !this.playerInBattle) {
       if (!(this.pokeMapService.playerBasePosition === 'player-left')) {
         this.pokeMapService.playerBasePosition = 'player-left';
         return
@@ -74,13 +83,16 @@ export class MovementService {
               this.pokeMap[this.playerPositionX][this.playerPositionY].player = true;
               this.pokeMap[this.playerPositionX][this.playerPositionY].nextCell = false
               this.playerMoving = false;
+              if (this.battleService.generateBattle(0.1) && this.pokeMap[this.playerPositionX][this.playerPositionY].map.includes('sprite-4')) {
+                this._playerInBattle = true;
+              }
             }, 60);
           }, 60);
          }, 60);
       }
     }
 
-    if (key === 'ArrowUp') {
+    if (key === 'ArrowUp' && !this.playerInBattle) {
       if (!(this.pokeMapService.playerBasePosition === 'player-up')) {
         this.pokeMapService.playerBasePosition = 'player-up';
         return
@@ -101,13 +113,16 @@ export class MovementService {
               this.pokeMap[this.playerPositionX][this.playerPositionY].player = true;
               this.pokeMap[this.playerPositionX][this.playerPositionY].nextCell = false;
               this.playerMoving = false;
+              if (this.battleService.generateBattle(0.1) && this.pokeMap[this.playerPositionX][this.playerPositionY].map.includes('sprite-4')) {
+                this._playerInBattle = true;
+              }
             }, 60);
           }, 60);
          }, 60);
       }
     }
 
-    if (key === 'ArrowDown') {
+    if (key === 'ArrowDown' && !this.playerInBattle) {
       if (!(this.pokeMapService.playerBasePosition === 'player-front')) {
         this.pokeMapService.playerBasePosition = 'player-front';
         return
@@ -128,6 +143,9 @@ export class MovementService {
               this.pokeMap[this.playerPositionX][this.playerPositionY].player = true;
               this.pokeMap[this.playerPositionX][this.playerPositionY].nextCell = false;
               this.playerMoving = false;
+              if (this.battleService.generateBattle(0.1) && this.pokeMap[this.playerPositionX][this.playerPositionY].map.includes('sprite-4')) {
+                this._playerInBattle = true;
+              }
             }, 60);
           }, 60);
          }, 60);

@@ -1,6 +1,7 @@
 <router-outlet></router-outlet>
 <div (keydown)="keyboardEvents( $event )" tabindex="0"
 id="game-app">
+<app-in-battle></app-in-battle>
   <div *ngFor="let column of pokeMap">
     <div *ngFor="let cell of column" class="cell">
       <div *ngIf="cell.map.includes('sprite-1')" class="sprite-1"></div>

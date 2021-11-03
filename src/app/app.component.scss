@@ -1,6 +1,7 @@
 $black: #000;
 
 #game-app {
+    position: relative;
     height: 100vh;
     width: 960px;
     height: 640px;
@@ -26,8 +27,6 @@ $black: #000;
         position: absolute;
         top: -20px;
         background-size: 875px;
-        animation-name: moveLeft;
-        animation-duration: 8s;
         z-index: 2;
     }
 

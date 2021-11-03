@@ -10,7 +10,7 @@ import { PokemonMap } from '../interfaces/pokemonmap.interface';
 
 export class PokeMapService {
 
-  private _pokeMap: PokemonMap[][] = new Array<null>(30)
+  _pokeMap: PokemonMap[][] = new Array<null>(30)
   .fill(null)
   .map(() => new Array<null>(20)
       .fill(null)
