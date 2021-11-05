@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-log-in',
@@ -7,9 +8,17 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class LogInComponent implements OnInit {
 
-  constructor() { }
+  username: string = '';
+  password: string = '';
+  LoginMessage: string = '';
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  loginPlayer(): void {
+    this.LoginMessage = this.authService.logInPlayer(this.username, this.password);
   }
 
 }

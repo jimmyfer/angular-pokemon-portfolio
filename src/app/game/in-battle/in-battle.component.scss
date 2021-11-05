@@ -5,10 +5,164 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
-    z-index: 9;
+    height: 75%;
+    z-index: 6;
     animation-name: example;
     animation-duration: 2s;
+
+    .pokemon-player {
+        position: absolute;
+        bottom: 0;
+        left: 180px;
+        width: 160px;
+        height: 160px;
+        margin-bottom: -36px;
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .pokemon-enemy {
+        position: absolute;
+        top: 160px;
+        right: 175px;
+        width: 160px;
+        height: 160px;
+        z-index: 6;
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .status-enemy {
+        position: absolute;
+        top: 50px;
+        left: 100px;
+        z-index: 6;
+    }
+    .status-player {
+        position: absolute;
+        bottom: 30px;
+        right: 50px;
+        z-index: 6;
+    }
+    .pokemon-status{
+        width: 300px;
+        height: 80px;
+        padding: 5px;
+        background-color: #27272C;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 14px;
+        border-radius: 10px 0px 10px 0px;
+        .status-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+            background-color: #F7F7D8;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            .name {
+                width: 70%;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .level {
+                width: 30%;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: right;
+                span {
+                    margin-right: 20px;
+                }
+            }
+            .hp-section {
+                width: 100%;
+                height: 20px;
+                position: relative;
+                .hp-content {
+                    position: absolute;
+                    width: 250px;
+                    height: 18px;
+                    right: 10px;
+                    border-radius: 6px;
+                    background-color: #27272C;
+                    span {
+                        font-size: 10px;
+                        background: rgb(253,29,29);
+                        background: linear-gradient(180deg, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 10%, rgba(253,29,29,1) 100%);
+                        margin-left: 8px;
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                    .hp-bar {
+                        width: 80%;
+                        height: 75%;
+                        background: white;
+                        float: right;
+                        margin-top: 2px;
+                        margin-right: 5px;
+                        border-radius: 6px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        .hp-bar-content {
+                            width: 98%;
+                            height: 80%;
+                            border-radius: 6px;
+                            .real-hp {
+                                width: 100%;
+                                height: 100%;
+                                background: #12E960;
+                                border-radius: 6px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .down-style {
+        position: absolute;
+        top: 70px;
+        left: 30px;
+        display: block;
+        width: 280px;
+        height: 35px;
+        border-radius: 0px 0px 0px 20px;
+        background-color: #403F4F;
+        z-index: -1;
+        .triangle-style {
+            position: relative;
+            height: 100%;
+            .triangle {
+                position: absolute;
+                width: 0;
+                height: 0;
+                border: 20px solid transparent;
+                border-top: 0;
+                border-bottom: 20px solid #403F4F;
+                bottom: 0;
+                right: -20px;
+            }
+        }
+    }
+    .battleBackground {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
 
 @keyframes example {

@@ -12,6 +12,7 @@ interface Accounts {
 export class AuthService {
 
   private _logged: boolean = false;
+  private _activeUser: string = ''
   private _signUp: boolean;
   private _accounts: string = '';
   private _accountsStore: Accounts[] = [];
@@ -19,6 +20,7 @@ export class AuthService {
   constructor(private router: Router) {
     (router.url === '/signup') ? this._signUp = true : this._signUp = false;
     this.setAccounts();
+    this.isLogged();
     console.log(this._accountsStore)
   }
 
@@ -43,12 +45,38 @@ export class AuthService {
     this._signUp = signup;
   }
 
-  SignUpPlayer(user: string, password: string): string {
+  signUpPlayer(user: string, password: string): string {
     if (this.accountExist(user)) {
-      return 'Account Exist!';
+      return 'Account already Exist!';
     }
     window.localStorage.setItem('accounts', this._accounts + 'user:' + user + '&' + 'password:' + password + '-')
     return 'Successful registration!';
+  }
+
+  logInPlayer(user: string, password: string): string {
+    let loggedOrNot: boolean = false;
+    let wrongPassword: boolean = false;
+    if (this.accountExist(user)) {
+      this._accountsStore.forEach(account => {
+        if (account.user == user) {
+          if (account.password == password) {
+            loggedOrNot = true;
+          }else{
+            wrongPassword = true;
+          }
+        }
+      })
+    }
+    if (loggedOrNot) {
+      this._logged = true;
+      window.localStorage.setItem('logged', user);
+      this.router.navigate(['/'])
+      return 'logged!'
+    }
+    if (wrongPassword) {
+      return 'Wrong password!';
+    }
+    return 'Account dont exist!';
   }
 
   setAccounts() {
@@ -83,6 +111,16 @@ export class AuthService {
       return true;
     }
     return false;
+  }
+
+  isLogged(): void {
+    console.log(window.localStorage.getItem('logged'));
+    if (window.localStorage.getItem('logged')) {
+      if (this.accountExist(window.localStorage.getItem('logged')!)) {
+        this._logged = true;
+        this._activeUser = window.localStorage.getItem('logged')!;
+      }
+    }
   }
 
 }

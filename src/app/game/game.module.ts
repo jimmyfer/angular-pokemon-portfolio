@@ -3,12 +3,14 @@ import { NgModule } from "@angular/core";
 
 import { InBattleComponent } from "./in-battle/in-battle.component";
 import { GameWindowComponent } from "./game-window/game-window.component";
+import { BattleConsoleComponent } from './battle-console/battle-console.component';
 
 
 @NgModule({
     declarations: [
         GameWindowComponent,
-        InBattleComponent
+        InBattleComponent,
+        BattleConsoleComponent
     ],
     imports: [
         CommonModule

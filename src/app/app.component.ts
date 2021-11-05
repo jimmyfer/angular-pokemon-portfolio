@@ -10,13 +10,14 @@ import { AuthService } from './services/auth.service';
 
 
 export class AppComponent {
-
-  logged: boolean;
   signUp: boolean
 
   constructor ( private router: Router, private authService: AuthService) {
-    this.logged = authService.logged;
     this.signUp = authService.singUp;
+  }
+
+  get logged() {
+    return this.authService.logged;
   }
 
 }

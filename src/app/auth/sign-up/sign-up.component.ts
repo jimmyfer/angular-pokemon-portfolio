@@ -18,7 +18,7 @@ export class SignUpComponent implements OnInit {
   }
 
   signUpPlayer() {
-   this.signUpMessage = this.authService.SignUpPlayer(this.username, this.password);
+   this.signUpMessage = this.authService.signUpPlayer(this.username, this.password);
    this.username = '';
    this.password = '';
   }
