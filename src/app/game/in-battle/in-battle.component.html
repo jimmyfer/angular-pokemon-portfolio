@@ -1,12 +1,12 @@
-<div id="in-battle">
+<div *ngIf="playerInBattle" id="in-battle">
     <div class="battleBackground">
         <img src="../../../assets/img/battlebackground.png" alt="">
     </div>
     <div class="pokemon-player">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/heartgold-soulsilver/back/1.png" alt="">
+        <img src="{{ playerPokemon.back_sprite }}" alt="">
     </div>
     <div class="pokemon-enemy">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/heartgold-soulsilver/1.png" alt="">
+        <img src="{{ enemyPokemon.front_sprite }}" alt="">
     </div>
     <div class="status-enemy">
         <div class="down-style">
@@ -18,7 +18,7 @@
         <div class="pokemon-status">
             <div class="status-container">
                 <div class="name">
-                    <span>bulbasaur</span>
+                    <span>{{ enemyPokemon.name }}</span>
                 </div>
                 <div class="level">
                     <span>Lv100</span>
@@ -28,7 +28,7 @@
                         <span>HP</span>
                         <div class="hp-bar">
                             <div class="hp-bar-content">
-                                <div class="real-hp">
+                                <div class="real-hp" [style.width.%]="enemyHP" >
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
         <div class="pokemon-status">
             <div class="status-container">
                 <div class="name">
-                    <span>bulbasaur</span>
+                    <span>{{ playerPokemon.name }}</span>
                 </div>
                 <div class="level">
                     <span>Lv100</span>
@@ -57,7 +57,7 @@
                         <span>HP</span>
                         <div class="hp-bar">
                             <div class="hp-bar-content">
-                                <div class="real-hp">
+                                <div class="real-hp" [style.width.%]="playerHP">
                                 </div>
                             </div>
                         </div>

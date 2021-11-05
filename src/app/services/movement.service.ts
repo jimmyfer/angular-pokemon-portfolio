@@ -20,16 +20,11 @@ export class MovementService {
   playerPositionX: number = 0;
   playerPositionY: number = 0;
   playerMoving: boolean = false;
-  private _playerInBattle: boolean = false;
 
   constructor(private pokeMapService: PokeMapService, private battleService: BattleService) { 
     this.pokeMap = pokeMapService.pokeMap;
     this.playerPositionX = pokeMapService._playerPositionX;
     this.playerPositionY = pokeMapService._playerPositionY;
-  }
-
-  get playerInBattle() {
-    return this._playerInBattle;
   }
 
   updatePlayerPosition(key: string) {
@@ -54,8 +49,8 @@ export class MovementService {
               this.pokeMap[this.playerPositionX][this.playerPositionY].player = true;
               this.pokeMap[this.playerPositionX][this.playerPositionY].nextCell = false;
               this.playerMoving = false;
-              if (this.battleService.generateBattle(0.1) && this.pokeMap[this.playerPositionX][this.playerPositionY].map.includes('sprite-4')) {
-                this._playerInBattle = true;
+              if(this.pokeMap[this.playerPositionX][this.playerPositionY].map.includes('sprite-4')) {
+                this.battleService.generateBattle(0.1)
               }
             }, 60);
           }, 60);
@@ -83,8 +78,8 @@ export class MovementService {
               this.pokeMap[this.playerPositionX][this.playerPositionY].player = true;
               this.pokeMap[this.playerPositionX][this.playerPositionY].nextCell = false
               this.playerMoving = false;
-              if (this.battleService.generateBattle(0.1) && this.pokeMap[this.playerPositionX][this.playerPositionY].map.includes('sprite-4')) {
-                this._playerInBattle = true;
+              if(this.pokeMap[this.playerPositionX][this.playerPositionY].map.includes('sprite-4')) {
+                this.battleService.generateBattle(0.1)
               }
             }, 60);
           }, 60);
@@ -113,8 +108,8 @@ export class MovementService {
               this.pokeMap[this.playerPositionX][this.playerPositionY].player = true;
               this.pokeMap[this.playerPositionX][this.playerPositionY].nextCell = false;
               this.playerMoving = false;
-              if (this.battleService.generateBattle(0.1) && this.pokeMap[this.playerPositionX][this.playerPositionY].map.includes('sprite-4')) {
-                this._playerInBattle = true;
+              if(this.pokeMap[this.playerPositionX][this.playerPositionY].map.includes('sprite-4')) {
+                this.battleService.generateBattle(0.1)
               }
             }, 60);
           }, 60);
@@ -143,13 +138,18 @@ export class MovementService {
               this.pokeMap[this.playerPositionX][this.playerPositionY].player = true;
               this.pokeMap[this.playerPositionX][this.playerPositionY].nextCell = false;
               this.playerMoving = false;
-              if (this.battleService.generateBattle(0.1) && this.pokeMap[this.playerPositionX][this.playerPositionY].map.includes('sprite-4')) {
-                this._playerInBattle = true;
+              if(this.pokeMap[this.playerPositionX][this.playerPositionY].map.includes('sprite-4')) {
+                this.battleService.generateBattle(0.1)
               }
             }, 60);
           }, 60);
          }, 60);
       }
     }
+    
+  }
+
+  get playerInBattle(): boolean {
+    return this.battleService.playerInBattle;
   }
 }

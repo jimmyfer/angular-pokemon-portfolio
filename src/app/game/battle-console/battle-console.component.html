@@ -1,16 +1,22 @@
-<div id="battle-console">
+<div *ngIf="playerInBattle" id="battle-console">
     <div class="battle-container">
         <div class="battle-log">
             <div class="log-table">
-                <h1>What will you decide to do?</h1>
+                <h1>{{ battleLogMessage }}</h1>
             </div>
         </div>
         <div class="battle-command">
-            <ul id="commands">
-                <li><span>Fight</span></li>
+            <ul *ngIf="mainCommands" class="commands">
+                <li><span (click)="toggleMoves()">Fight</span></li>
                 <li><span>Bag</span></li>
                 <li><span>Pokemón</span></li>
                 <li><span>Run</span></li>
+            </ul>
+            <ul *ngIf="movesCommands" class="commands">
+                <li><span (click)="playerAttack(playerPokemon.moves.One)" class="moveSpan" >{{playerPokemon.moves.One.name}}</span></li>
+                <li><span (click)="playerAttack(playerPokemon.moves.Two)" class="moveSpan" >{{playerPokemon.moves.Two.name}}</span></li>
+                <li><span (click)="playerAttack(playerPokemon.moves.Thre)" class="moveSpan" >{{playerPokemon.moves.Thre.name}}</span></li>
+                <li><span (click)="playerAttack(playerPokemon.moves.Four)" class="moveSpan" >{{playerPokemon.moves.Four.name}}</span></li>
             </ul>
         </div>
     </div>

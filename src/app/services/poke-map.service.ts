@@ -81,7 +81,6 @@ export class PokeMapService {
    }
 
   get pokeMap(): any {
-    console.log(this._pokeMap);
     return this._pokeMap;
   }
 }

@@ -21,7 +21,6 @@ export class AuthService {
     (router.url === '/signup') ? this._signUp = true : this._signUp = false;
     this.setAccounts();
     this.isLogged();
-    console.log(this._accountsStore)
   }
 
   get logged(): boolean {
@@ -114,7 +113,6 @@ export class AuthService {
   }
 
   isLogged(): void {
-    console.log(window.localStorage.getItem('logged'));
     if (window.localStorage.getItem('logged')) {
       if (this.accountExist(window.localStorage.getItem('logged')!)) {
         this._logged = true;

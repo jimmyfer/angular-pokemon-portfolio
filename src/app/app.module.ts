@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { PokeMapService } from './services/poke-map.service';
 import { GameModule } from './game/game.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthService } from './services/auth.service';
+import { PokeApiService } from './services/poke-api.service';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { AuthService } from './services/auth.service';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     GameModule,
     AuthModule
@@ -24,7 +27,8 @@ import { AuthService } from './services/auth.service';
     MovementService,
     BattleService,
     PokeMapService,
-    AuthService
+    AuthService,
+    PokeApiService
   ],
   bootstrap: [AppComponent]
 })
