@@ -1,0 +1,14 @@
+<div (keydown)="keyboardEvents( $event )" tabindex="0" id="game-app">
+    <app-in-battle></app-in-battle>
+      <div *ngFor="let column of pokeMap">
+        <div *ngFor="let cell of column" class="cell">
+          <div *ngIf="cell.map.includes('sprite-1')" class="sprite-1"></div>
+          <div *ngIf="cell.map.includes('sprite-2')" class="sprite-2"></div>
+          <div *ngIf="cell.map.includes('sprite-3')" class="sprite-3"></div>
+          <div *ngIf="cell.map.includes('sprite-4') && !cell.player && !cell.nextCell" class="sprite-4"></div>
+          <div *ngIf="cell.map.includes('sprite-4') && cell.player || cell.map.includes('sprite-4') && cell.nextCell" class="sprite-5"></div>
+          <div *ngIf="cell.player" class="player player-base {{ playerBasePosition }}"></div>
+          <div *ngIf="cell.playerMovementActive.active" class="player player-base {{ cell.playerMovementActive.class }}"></div>
+        </div>
+      </div>
+</div>

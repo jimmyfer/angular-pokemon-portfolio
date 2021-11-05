@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-
-import { PokemonMap } from './interfaces/pokemonmap.interface';
-
-import { BattleService } from './services/battle.service';
-import { MovementService } from './services/movement.service';
-import { PokeMapService } from './services/poke-map.service';
-
-
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -17,22 +11,12 @@ import { PokeMapService } from './services/poke-map.service';
 
 export class AppComponent {
 
-  pokeMap: PokemonMap[][] = [];
-  playerBasePosition: string;
+  logged: boolean;
+  signUp: boolean
 
-  constructor ( private pokeMapService: PokeMapService, private movementService: MovementService, private battleService: BattleService) {
-    this.pokeMap = pokeMapService.pokeMap;
-    this.playerBasePosition = pokeMapService.playerBasePosition;
+  constructor ( private router: Router, private authService: AuthService) {
+    this.logged = authService.logged;
+    this.signUp = authService.singUp;
   }
 
-  keyboardEvents( e: any ) {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft' || e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-      this.movementService.updatePlayerPosition(e.key);
-      this.updatePlayerBasePosition();
-    }
-  }
-
-  updatePlayerBasePosition(): void {
-    this.playerBasePosition = this.pokeMapService.playerBasePosition;
-  }
 }
