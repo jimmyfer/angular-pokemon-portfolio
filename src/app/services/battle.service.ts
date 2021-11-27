@@ -29,6 +29,7 @@ export class BattleService {
   private _playerInBattle: boolean = false;
   private playerFirstOrNot: boolean = false;
   private _playerTurn: boolean = false;
+  private _battleLogMessage: string = 'What will you decide to do?';
 
   constructor(private pokeApiService: PokeApiService, private playerPokemonsService: PlayerPokemonsService) {
     setTimeout(() => {
@@ -87,14 +88,15 @@ export class BattleService {
     // }, 5000)
   }
 
-  enemyDamage(damage: number): void {
-    if (this.enemyPokemon.hp < damage) {
+  playerAttack(moveDamage: number, moveName: string, pokemonName: string): void {
+    this._battleLogMessage = ` ${pokemonName} attack with ${moveName}`;
+    if (this.enemyPokemon.hp < moveDamage) {
       this.enemyPokemon.hp = 0;
       setTimeout(() => {
         this._playerInBattle = false;
       }, 2000)
     }else{
-      this.enemyPokemon.hp = this.enemyPokemon.hp - damage;
+      this.enemyPokemon.hp = this.enemyPokemon.hp - moveDamage;
     }
     this._playerTurn = false;
     setTimeout(() => {
@@ -102,19 +104,20 @@ export class BattleService {
     }, 1500)
   }
 
-  playerDamage(damage: number): void {
-    if (this.playerPokemon.hp <= damage) {
+  enemyAttack(moveDamage: number, moveName: string, pokemonName: string): void {
+    this._battleLogMessage = ` ${pokemonName} attack with ${moveName}`;
+    if (this.playerPokemon.hp <= moveDamage) {
       this.playerPokemon.hp = 0;
       setTimeout(() => {
         this._playerInBattle = false;
       }, 2000)
     }else{
-      this.playerPokemon.hp = this.playerPokemon.hp - damage;
+      this.playerPokemon.hp = this.playerPokemon.hp - moveDamage;
     }
   }
 
   enemyTurn(): void {
-    this.playerDamage(this.enemyPokemon.moves.One.damage);
+    this.enemyAttack(this.enemyPokemon.moves.One.damage, this.enemyPokemon.moves.One.name, this.enemyPokemon.name);
   }
 
   get enemyHP(): number {
@@ -135,6 +138,10 @@ export class BattleService {
 
   get playerPokemon(): Pokemon {
     return this.playerPokemonsService.playerPokemons;
+  }
+
+  get battleLogMessage(): string {
+    return this._battleLogMessage;
   }
 
 

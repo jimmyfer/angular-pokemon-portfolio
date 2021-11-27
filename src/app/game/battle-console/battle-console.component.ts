@@ -12,7 +12,6 @@ import { PlayerPokemonsService } from 'src/app/services/player-pokemons.service'
 })
 export class BattleConsoleComponent implements OnInit {
 
-  battleLogMessage: string = 'What will you decide to do?';
   mainCommands: boolean = true;
   movesCommands: boolean = false;
 
@@ -28,13 +27,9 @@ export class BattleConsoleComponent implements OnInit {
   }
 
   playerAttack(move: {name: string, damage: number }) {
-    this.battleService.enemyDamage(move.damage);
+    this.battleService.playerAttack(move.damage, move.name, this.playerPokemon.name);
     this.movesCommands = false;
     this.mainCommands = true;
-    this.battleLogMessage = this.playerPokemon.name + ' attack width ' + move.name;
-    setTimeout(() => {
-      this.battleLogMessage = 'What will you decide to do?';
-    }, 1500)
   }
 
   get playerInBattle(): boolean {
@@ -47,6 +42,10 @@ export class BattleConsoleComponent implements OnInit {
 
   get playerPokemon(): Pokemon {
     return this.playerPokemonsService.playerPokemons;
+  }
+
+  get battleLogMessage(): string {
+    return this.battleService.battleLogMessage;
   }
 
 }
